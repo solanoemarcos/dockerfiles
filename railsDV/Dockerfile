@@ -10,11 +10,11 @@ WORKDIR /myapp
 
 #Copy gemfile
 COPY . /myapp
-COPY Gemfile* /myapp/
+COPY Gemfile /myapp/Gemfile
+COPY Gemfile.lock /myapp/Gemfile.lock
 
 #install
-RUN gem update --system
-RUN gem install bundler && bundle install
+RUN bundle install
 
 # Add a script to be executed every time the container starts.
 #COPY entrypoint.sh /usr/bin/
